@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: computeprime
+  name: computeprime
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: computeprime
+  template:
+    metadata:
+      labels:
+        app: computeprime
+    spec:
+      containers:
+      - command:
+        - sh
+        - -c
+        - while :; do dd if=/dev/zero of=/dev/null; done
+        image: registry.ocp4.example.com:8443/ubi9/ubi
+        name: ubi

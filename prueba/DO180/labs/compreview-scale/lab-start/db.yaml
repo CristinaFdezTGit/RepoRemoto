@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: List
+metadata: {}
+items:
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      labels:
+        app: quotesdb
+      name: quotesdb
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: quotesdb
+      template:
+        metadata:
+          labels:
+            app: quotesdb
+        spec:
+          containers:
+          - image: registry.ocp4.example.com:8443/rhel9/mysql-80:1-228
+            name: mysql-80
+            # env:
+            # - name: MYSQL_USER
+            #   value: operator1
+            # - name: MYSQL_PASSWORD
+            #   value: redhat123
+            # - name: MYSQL_DATABASE
+            #   value: quotes
+
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      labels:
+        app: quotesdb
+      name: quotesdb
+    spec:
+      ports:
+      - port: 3306
+        protocol: TCP
+        targetPort: 3306
+      selector:
+        app: quotesdb

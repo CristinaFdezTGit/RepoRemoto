@@ -1,0 +1,15 @@
+OpenShift API URL:
+https://api.ocp4.example.com:6443
+
+OpenShift web console:
+https://console-openshift-console.apps.ocp4.example.com
+
+Famous Quotes URL:
+http://frontend-review.apps.ocp4.example.com
+
+MySQL images:
+registry.ocp4.example.com:8443/rhel9/mysql-80:1-228
+registry.ocp4.example.com:8443/rhel9/mysql-80:1-237
+
+Famous quotes image:
+registry.ocp4.example.com:8443/redhattraining/famous-quotes:2-42
